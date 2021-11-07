@@ -1,9 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\KiriCord\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\KiriCord\\.nuget\\packages",
-      "F:\\Program Files\\Visual Studio\\SDK\\NuGetPackages"
-    ]
-  }
-}
