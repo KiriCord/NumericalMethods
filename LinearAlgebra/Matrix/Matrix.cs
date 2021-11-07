@@ -64,6 +64,23 @@ namespace LinearAlgebra.Matrix
 
             return vectors.ToMatrix();
         }
+        
+        public int MaxElementRow(int row)
+        {
+            var matrix = new Matrix(this);
+            decimal temp = matrix[row, 0];
+            int index = 0;
+            for(int i = 0; i < ColumnCount; i++)
+            {  
+                if (Math.Abs(matrix[row, i]) > Math.Abs(temp))
+                {
+                    temp = matrix[row, i];
+                    index = i;
+                }
+            }
+
+            return index;
+        }
 
         public decimal Determinant()
         {
@@ -138,7 +155,7 @@ namespace LinearAlgebra.Matrix
         }
         
         
-        public override string ToString() => this.ToString(" #0.000000000000;-#0.000000000000; 0.000000000000");
+        public override string ToString() => this.ToString(" #0.0000;-#0.0000; 0.0000");
 
         
         public string ToString(string format)
