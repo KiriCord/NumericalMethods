@@ -50,7 +50,7 @@ namespace LinearAlgebra.Vector
        
        public override string ToString()
        {
-           return ToString(" #0.000000000000;-#0.000000000000;0.000000000000");
+           return ToString(" #0.0000;-#0.0000;0.0000");
        }
 
        public string ToString(string format) => string.Join('\n',
