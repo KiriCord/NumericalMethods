@@ -10,6 +10,21 @@ namespace LinearAlgebra.Matrix
     {
         private readonly decimal[,] _matrx;
         
+        public Matrix Transponse
+        {
+            get
+            {
+                var t = new Matrix(ColumnCount, RowCount);
+                for(var i = 0; i < RowCount; i++)
+                for (int j = 0; j < ColumnCount; j++)
+                {
+                    t[j, i] = this[i, j];
+                }
+
+                return t;
+            }   
+        }
+        
         public Matrix(decimal[,] matrix)
         {
             _matrx = matrix;
@@ -38,16 +53,11 @@ namespace LinearAlgebra.Matrix
             set => _matrx[i, j] = value;
         }
         
+        
         public static implicit operator decimal[,](Matrix matrix) => new Matrix(matrix)._matrx;
         public int RowCount => _matrx.GetUpperBound(0) +1;
 
         public int ColumnCount => _matrx.GetUpperBound(1) + 1;
-
-        public Vector.Vector Residual(Vector.Vector x, Vector.Vector f)
-        {
-            var resultMatrix = this * x - f;
-            return resultMatrix;
-        }
         
         public Matrix Inv()
         {
@@ -63,6 +73,29 @@ namespace LinearAlgebra.Matrix
             }).ToArray();
 
             return vectors.ToMatrix();
+        }
+
+        public Vector.Vector GetLastColumn()
+        {
+            var matrix = new Matrix(this);
+            var vector = new Vector.Vector(ColumnCount - 1);
+            for (int i = 0; i < ColumnCount - 1; i++)
+            {
+                vector[i] = matrix[i,ColumnCount - 1];
+            }
+
+            return vector;
+        }
+
+        public Vector.Vector GetRow(int Row)
+        {
+            var vector = new Vector.Vector(ColumnCount);
+            for (int i = 0; i < ColumnCount; i++)
+            {
+                vector[i] = this[Row, i];
+            }
+
+            return vector;
         }
         
         public int MaxElementRow(int row)
@@ -179,6 +212,30 @@ namespace LinearAlgebra.Matrix
 
             return builder.ToString();
         }
+        
+        public static Matrix Concat(Matrix one, Vector.Vector other) {
+            if (one.RowCount != other.Count) throw new Exception("Nope");
+
+            var result = new Matrix(one.RowCount, one.ColumnCount + 1);
+
+            for (var i = 0; i < result.RowCount; i++)
+            for (var j = 0; j < result.ColumnCount; j++)
+                result[i, j] = j == one.ColumnCount ? other[i] : one[i, j];
+
+            return result;
+        }
+        
+        public static Matrix Concat(Matrix one, Matrix other) {
+            if (one.RowCount != other.RowCount) throw new Exception("Nope");
+
+            var result = new Matrix(one.RowCount, one.ColumnCount + 1);
+
+            for (var i = 0; i < result.RowCount; i++)
+            for (var j = 0; j < result.ColumnCount; j++)
+                result[i, j] = j == one.ColumnCount ? other[i, 0] : one[i, j];
+
+            return result;
+        }
 
         public static Matrix operator +(Matrix a, Matrix b)
         {
@@ -212,7 +269,7 @@ namespace LinearAlgebra.Matrix
             }
             return new Matrix(resultMatrix);
         }
-
+        
         public static Matrix operator *(Matrix matrx, int num)
         {
             var resultMatrix = new decimal[matrx.RowCount, matrx.ColumnCount];
@@ -225,6 +282,7 @@ namespace LinearAlgebra.Matrix
             }
             return new Matrix(resultMatrix);
         }
+        
         
         public static Matrix operator -(Matrix a, Matrix b)
         {
