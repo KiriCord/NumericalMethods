@@ -9,14 +9,6 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            decimal[,] matrixMainF = 
-            {
-                { 1.00m, 0.47m, -0.11m, 0.55m, 1.09m },
-                { 0.42m, 1.00m, 0.35m, 0.17m, 2.87m },
-                { -0.25m, 0.67m, 1.00m, 0.36m, 3.65m },
-                { 0.54m, -0.32m, -0.74m, 1.00m, 4.43m }
-            };
-            
             decimal[,] matrixMain = 
             {
                 { 1.00m, 0.47m, -0.11m, 0.55m },
@@ -37,7 +29,7 @@ namespace Lab1
             Console.WriteLine($"\nРешения X:\n{X}");
 
             Vector residual = new Vector(matrix * X - f); 
-            Console.WriteLine($"\nВектор невязки(r = Ax - f):\n{residual}");
+            Console.WriteLine($"\nВектор невязки(r = Ax - f):\n{residual.ToString(" #0.000000000000;-#0.000000000000;0.000000000000")}");
 
             decimal det = matrix.Determinant();
             Console.WriteLine($"\nОпределитель:\n{det}");
