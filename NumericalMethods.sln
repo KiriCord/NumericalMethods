@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1", "Lab1\Lab1.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinearAlgebra", "LinearAlgebra\LinearAlgebra.csproj", "{035C5686-2590-468E-A1C5-12E68A9B0B2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2", "Lab2\Lab2.csproj", "{FD0D8695-E50C-4A87-80C8-539766538362}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab3", "Lab3\Lab3.csproj", "{2876153D-91A5-452F-BDB7-BB4FD28D687D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{035C5686-2590-468E-A1C5-12E68A9B0B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{035C5686-2590-468E-A1C5-12E68A9B0B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{035C5686-2590-468E-A1C5-12E68A9B0B2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0D8695-E50C-4A87-80C8-539766538362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0D8695-E50C-4A87-80C8-539766538362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0D8695-E50C-4A87-80C8-539766538362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD0D8695-E50C-4A87-80C8-539766538362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2876153D-91A5-452F-BDB7-BB4FD28D687D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2876153D-91A5-452F-BDB7-BB4FD28D687D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2876153D-91A5-452F-BDB7-BB4FD28D687D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2876153D-91A5-452F-BDB7-BB4FD28D687D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

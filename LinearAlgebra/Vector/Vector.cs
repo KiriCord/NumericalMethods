@@ -42,15 +42,27 @@ namespace LinearAlgebra.Vector
             get => _elements[i];
             set => _elements[i] = value;
         }
+        
+        public bool IsVector => Count == 1;
+        
+        public Vector From(IEnumerable<decimal> values) {
+            using var enumerator = values.GetEnumerator();
+            for (var i = 0; i < Count; i++) {
+                if (!enumerator.MoveNext()) throw new Exception("БЛИН");
+                this[i] = enumerator.Current;
+            }
 
-       /* public override string ToString()
-        {
-            return string.Join("\n\r", _elements);
-        }*/
+            return this;
+        }
+
+        /* public override string ToString()
+         {
+             return string.Join("\n\r", _elements);
+         }*/
        
        public override string ToString()
        {
-           return ToString(" #0.0000;-#0.0000;0.0000");
+           return ToString(" #0.0000000;-#0.0000000;0.0000000");
        }
 
        public string ToString(string format) => string.Join('\n',
@@ -117,6 +129,33 @@ namespace LinearAlgebra.Vector
             for (int i = 0; i < a.Count; i++)
             {
                 resultVec[i] = a[i] - b[i];
+            }
+
+            return resultVec;
+        }
+        
+        public static Vector operator -(Vector a)
+        {
+            Vector resultVec = new Vector(a.Count);
+
+            for (int i = 0; i < a.Count; i++)
+            {
+                resultVec[i] = -a[i];
+            }
+
+            return resultVec;
+        }
+        
+        public static Vector operator +(Vector a, Vector b)
+        {
+            if (a.Count != b.Count)
+                throw new Exception("Addition NOPE");
+
+            Vector resultVec = new Vector(a.Count);
+
+            for (int i = 0; i < a.Count; i++)
+            {
+                resultVec[i] = a[i] + b[i];
             }
 
             return resultVec;

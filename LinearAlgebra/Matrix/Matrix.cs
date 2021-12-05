@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -58,6 +59,21 @@ namespace LinearAlgebra.Matrix
         public int RowCount => _matrx.GetUpperBound(0) +1;
 
         public int ColumnCount => _matrx.GetUpperBound(1) + 1;
+        
+        public Matrix From(IEnumerable<decimal> values) {
+            using var enumerator = values.GetEnumerator();
+            for (var i = 0; i < RowCount; i++)
+            for (var j = 0; j < ColumnCount; j++) {
+                if (!enumerator.MoveNext()) throw new Exception("БЛИН");
+
+                this[i, j] = enumerator.Current;
+            }
+
+            return this;
+        }
+        
+        public bool IsColumnVector => ColumnCount == 1;
+        public bool IsRowVector => RowCount == 1;
         
         public Matrix Inv()
         {
@@ -236,6 +252,7 @@ namespace LinearAlgebra.Matrix
 
             return result;
         }
+        
 
         public static Matrix operator +(Matrix a, Matrix b)
         {

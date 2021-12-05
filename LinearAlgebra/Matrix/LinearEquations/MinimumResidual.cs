@@ -30,7 +30,7 @@ namespace LinearAlgebra.Matrix.LinearEquations
             } while (Norma.TwoVectorNorm(xk - xkp) > 1e-6m);
             
             Console.WriteLine(
-                $"Номер итерации {iterCount}\nПредыдущий вектор\n{xkp}\nСледующий\n{xk}\nРазница между предыдущим и следующим\n{xk - xkp}\nНорма разницы равна {Norma.TwoVectorNorm(xk - xkp)}\n");
+                $"Номер итерации {iterCount}");
             return xk;
         }
         
