@@ -3,7 +3,6 @@ using LinearAlgebra.Matrix;
 using LinearAlgebra.Matrix.LinearEquations;
 using LinearAlgebra.Vector;
 
-
 namespace Lab3
 {
     public static class Program
@@ -34,7 +33,7 @@ namespace Lab3
                 item => -Sqr(item[2]) - 2 * item[0] * item[1] + 0.3m
             };
             
-            var guess = new Vector(new []{0m, 0m, 0m });
+            var guess = new Vector(new []{1/6m, 1/6m, 1/6m });
             
             var reducedVectorFunction = new VectorFunction(reducedVector);
             var vecFun = new VectorFunction(originalVector);

@@ -33,6 +33,8 @@ namespace LinearAlgebra.Matrix.LinearEquations
                 xk += gauss;
                 CounterIteration++;
             } while (Norma.TwoVectorNorm(xk - xkp) > 1e-6m);
+            
+            Console.WriteLine($"Номер итерации: {CounterIteration}");
 
             return xk;
         }
